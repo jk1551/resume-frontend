@@ -1,27 +1,25 @@
 import Footer from '@/components/custom/Footer';
 import Header from '@/components/custom/Header';
-import { Outlet } from 'react-router';
+import { AppRoutes } from '@/lib/appRoutes';
+import { Outlet, useNavigate } from 'react-router';
 
 function RootLayout() {
-  const login = () => {
-    alert('logged in');
+  const navigate = useNavigate();
+  const auth = () => {
+    navigate(AppRoutes.Authentication);
   };
 
   const logout = () => {
     alert('logged out');
   };
 
-  const signup = () => {
-    alert('signup');
-  };
-
   return (
     <>
       <Header
         isAuthenticated={false}
-        onLogin={login}
+        onLogin={auth}
         onLogout={logout}
-        onSignup={signup}
+        onSignup={auth}
       />
       <main style={{ padding: '20px' }}>
         <Outlet />
